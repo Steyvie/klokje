@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>Clock</title>
+        <title>klokje</title>
         <style>
             body {
                 background: black;
@@ -63,9 +63,7 @@
 
             // Load agenda content
             async function fetchAgenda() {
-                const username = "steyvie"; // lowercase exactly as in URL
-                const repo = "klokje"; // exactly as in URL
-                const url = `https://raw.githubusercontent.com/${username}/${repo}/main/agenda.txt?t=${Date.now()}`;
+                const url = `https://raw.githubusercontent.com/Steyvie/klokje/refs/heads/main/agenda.txt`;
 
                 console.log("Fetching:", url); // Check this in browser console
 
