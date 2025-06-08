@@ -61,14 +61,16 @@
                     dateString.charAt(0).toUpperCase() + dateString.slice(1);
             }
 
-            // Load agenda content
+            // Load agenda content with cache busting
             async function fetchAgenda() {
-                const url = `https://raw.githubusercontent.com/Steyvie/klokje/refs/heads/main/agenda.txt`;
+                const url = `https://raw.githubusercontent.com/Steyvie/klokje/main/agenda.txt?t=${Date.now()}`;
 
-                console.log("Fetching:", url); // Check this in browser console
+                console.log("Fetching:", url);
 
                 try {
-                    const response = await fetch(url);
+                    const response = await fetch(url, {
+                        cache: "no-store", // Bypass cache
+                    });
                     console.log("Status:", response.status);
 
                     if (response.ok) {
@@ -109,7 +111,7 @@
             updateTime();
             fetchAgenda();
             setInterval(updateTime, 1000);
-            setInterval(fetchAgenda, 60000);
+            setInterval(fetchAgenda, 60000); // Update agenda every minute
         </script>
     </body>
 </html>
